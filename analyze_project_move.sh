@@ -43,7 +43,7 @@ mkdir -p "migration-to-${DESTINATION_ORG_ID}"
 
 for PROJECT_ID in $(gcloud projects list --format="value(project_id)")
 do
-    gcloud asset analyze-move --project_id="${PROJECT_ID}" \
+    gcloud asset analyze-move --project="${PROJECT_ID}" \
         --destination-organization="${DESTINATION_ORG_ID}" \
         > migration-to-${DESTINATION_ORG_ID}/migrate_${PROJECT_ID}_to_${DESTINATION_ORG_ID}_analysis.txt
 done
