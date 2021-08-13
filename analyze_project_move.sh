@@ -41,7 +41,7 @@
 
 mkdir -p "migration-to-${DESTINATION_ORG_ID}"
 
-for PROJECT_ID in $(gcloud projects list --format="value(project_id)")
+for PROJECT_ID in $(gcloud projects list --filter "parent.id=${SOURCE_ORG_ID} AND parent.type=organization" --format="value(project_id)")
 do
     gcloud asset analyze-move --project="${PROJECT_ID}" \
         --destination-organization="${DESTINATION_ORG_ID}" \
